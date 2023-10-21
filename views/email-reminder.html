@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Your Custom Font', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .header {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: left;
+        }
+        .content {
+            padding: 20px;
+            text-align: left;
+        }
+        .greeting {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .quote {
+            font-style: italic;
+            margin: 20px 0;
+        }
+        .motivation {
+            color: #3498db;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Got a Minute?
+        </div>
+        <div class="content">
+            <p class="greeting">Hello, {{firstName}},</p>
+            <p>Here's a little reminder to help you stay motivated in developing your habit: {{habitName}}.</p>
+            <p class="quote"><em>"The journey of a thousand miles begins with a single step." - Lao Tzu</em></p>
+            <p class="motivation">Take that first step today, and you'll be one step closer to achieving your goals.</p>
+            <p>Best regards,<br>Your Habit Development Team</p>
+        </div>
+    </div>
+</body>
+</html>
+
