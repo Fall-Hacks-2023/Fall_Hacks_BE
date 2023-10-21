@@ -22,16 +22,16 @@ app.use(cors({
   credentials: true
 }))
 
-// const content = {
-//   subject: 'Scheduled Email Test',
-//   text: 'This is a test email after 1 minute.',
-//   html: '<strong>This is a test email sent after 1 minute.</strong>'
-// };
+const content = {
+  subject: 'Scheduled Email Test',
+  text: 'This is a test email after 1 minute.',
+  html: '<strong>This is a test email sent after 1 minute.</strong>'
+};
 
-// // This schedules an email to be sent 1 minute from now and every day after that
-// // (Change 'days' to 'weeks' or 'months' to test those intervals)
-// const job = emailScheduler.scheduleEmail('minutes', 3, 'manvir_heer@sfu.ca', content);
-// //console.log(job)
+// This schedules an email to be sent 1 minute from now and every day after that
+// (Change 'days' to 'weeks' or 'months' to test those intervals)
+const job = emailScheduler.scheduleEmail('minutes', 3, 'manvir_heer@sfu.ca', content);
+//console.log(job)
 
 
 app.use(logger('dev'));
