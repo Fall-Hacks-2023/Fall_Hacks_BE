@@ -13,6 +13,7 @@ dotenv.config();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter  = require('./routes/auth');
+var habitRouter = require('./routes/habit');
 var errorHandler = require('./handlers/errorHandler');
 
 var app = express();
