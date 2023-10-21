@@ -6,6 +6,7 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 var session = require('express-session');
 var dotenv = require('dotenv');
+var cors = require('cors');
 dotenv.config();
 
 var indexRouter = require('./routes/index');
@@ -15,6 +16,11 @@ var authRouter  = require('./routes/auth');
 var errorHandler = require('./handlers/errorHandler');
 
 var app = express();
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true
+}))
 
 app.use(logger('dev'));
 app.use(express.json());
