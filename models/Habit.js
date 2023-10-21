@@ -8,6 +8,10 @@ const habitSchema = new mongoose.Schema({
     achievementDate: {
         type: Date,
     },
+    dateCreated: {
+        type: Date,
+        default: Date.now,
+    },
     interval: {
         type: {
             type: String,
