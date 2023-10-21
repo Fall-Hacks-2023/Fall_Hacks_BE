@@ -118,3 +118,16 @@ exports.logout = (req, res) => {
         return res.status(500).send('Internal server error');
     }
 }
+
+exports.checkLoggedIn = (req, res, next) => {
+    try {
+        if (req.session.email) {
+            next();
+        } else {
+            return res.status(401).send('Unauthorized');
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('Internal server error');
+    }
+}

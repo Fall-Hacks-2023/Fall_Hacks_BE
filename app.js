@@ -12,6 +12,7 @@ dotenv.config();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter  = require('./routes/auth');
+var habitRouter = require('./routes/habit');
 
 var errorHandler = require('./handlers/errorHandler');
 
@@ -39,6 +40,7 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/habit', habitRouter);
 
 console.log(process.env.DATABASE)
 mongoose.connect(process.env.DATABASE);
