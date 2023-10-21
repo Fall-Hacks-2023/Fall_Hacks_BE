@@ -78,6 +78,7 @@ exports.login = async (req, res)  => {
         }
 
         req.session.email = email;
+        req.session.save();
 
         return res.status(200).json({ user: { email: req.session.email } });
     } catch (err) {
@@ -86,18 +87,27 @@ exports.login = async (req, res)  => {
     }
 }
 
-exports.getLoginStatus = (req, res) => {
+exports.getLoginStatus = async (req, res) => {
     try {
-        if (req.session.email) {
-            return res.status(200).json({ user: { email: req.session.email } });
-        } else {
+        if (!req.session.email) {
             return res.status(401).send('Unauthorized');
         }
+
+        console.log(req.session.email);
+        const user = await User.findOne({ email: req.session.email }, { password: 0 });
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        return res.status(200).json({ user });
+
     } catch (err) {
         console.log(err);
         return res.status(500).send('Internal server error');
     }
-}
+};
+
 
 exports.logout = (req, res) => {
     try {
