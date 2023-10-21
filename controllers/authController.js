@@ -25,6 +25,11 @@ exports.getUser = async (req, res, next) => {
 exports.signup = async (req, res) => {
     try {
         const user = res.user;
+        const firstName   = req.body.firstName;
+        const lastName    = req.body.lastName;
+        const age = req.body.age;
+        const joinDate = new Date();
+        const points = 0;
         const email = req.body.email;
         const password = req.body.password;
 
@@ -32,19 +37,26 @@ exports.signup = async (req, res) => {
             return res.status(409).send('User already exists');
         }
 
+        if (!firstName || !lastName || !age || !email || !password) {
+            return res.status(400).send('Missing fields');
+        }
+
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
         await User.create({
             email: email,
+            firstName: firstName,
+            lastName: lastName,
+            age: age,
+            joinDate: joinDate,
+            points: points,
             password: hashedPassword,
         });
         
-        console.log(req.session)
         req.session.email = email;
-        console.log(req.session)
-
         return res.status(201).send('User created');
+
     } catch (err) {
         console.log(err);
         return res.status(500).send('Internal server error');
